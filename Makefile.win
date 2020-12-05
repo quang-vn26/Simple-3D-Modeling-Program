@@ -4,14 +4,14 @@
 CPP      = g++.exe
 CC       = gcc.exe
 WINDRES  = windres.exe
-OBJ      = run.o
-LINKOBJ  = run.o
-LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW32/lib" -static-libstdc++ -static-libgcc -lopengl32 -lglut32 -lglu32 
+OBJ      = run.o test1.o draw1.o
+LINKOBJ  = run.o test1.o draw1.o
+LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW32/lib" -static-libstdc++ -static-libgcc -lopengl32 -lglut32 -lglu32  -g3
 INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW32/include"
 CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW32/include"
 BIN      = GK.exe
-CXXFLAGS = $(CXXINCS) 
-CFLAGS   = $(INCS) 
+CXXFLAGS = $(CXXINCS) -g3
+CFLAGS   = $(INCS) -g3
 RM       = rm -f
 
 .PHONY: all all-before all-after clean clean-custom
@@ -27,3 +27,9 @@ $(BIN): $(OBJ)
 
 run.o: run.cpp
 	$(CPP) -c run.cpp -o run.o $(CXXFLAGS)
+
+test1.o: test1.cpp
+	$(CPP) -c test1.cpp -o test1.o $(CXXFLAGS)
+
+draw1.o: draw1.cpp
+	$(CPP) -c draw1.cpp -o draw1.o $(CXXFLAGS)
